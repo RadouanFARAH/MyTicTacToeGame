@@ -1,51 +1,71 @@
-body {
-    font: 14px "Century Gothic", Futura, sans-serif;
-    margin: 20px;
-  }
+
+.game {
+position: relative;
+width: fit-content;
+left: 30%;
+display: -webkit-inline-flex;
+padding: 5px;
+ 
   
-  ol, ul {
-    padding-left: 30px;
-  }
+}
+.game-info {
+  font-family: 'Agency FB';
+  font-size: 40px;
+  text-align: center;
+  position: relative;
+  left : 50px;
   
-  .board-row:after {
-    clear: both;
-    content: "";
-    display: table;
-  }
+ 
+}
+
+
+.square {
+  background-color: white;
+  font-size: x-large;
+  float: left;
+  width: 70px;
+  height: 70px;
+  border: 2px solid black;
   
-  .status {
-    margin-bottom: 10px;
-  }
+
+}
+
+.board-row {
+  height: 30%;
+ 
+
+}
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.button {
   
-  .square {
-    background: #fff;
-    border: 1px solid #999;
-    float: left;
-    font-size: 30px;
-    font-weight: bold;
-    line-height: 34px;
-    height: 70px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
-    text-align: center;
-    width: 70px;
-  }
+ 
+  font-size: 25px;
+  cursor: pointer;
+  text-align: center;
   
-  .square:focus {
-    outline: none;
-  }
+ 
+  color: #fff;
+  background-color: #4CAF50;
+
+  border-radius: 5px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.ol {
   
-  .kbd-navigation .square:focus {
-    background: #ddd;
-  }
+  list-style: none; 
+  font: 15px 'trebuchet MS', 'lucida sans';
   
-  .game {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .game-info {
-    margin-left: 20px;
-  }
-  
+}

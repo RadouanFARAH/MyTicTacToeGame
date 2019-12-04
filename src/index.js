@@ -85,17 +85,17 @@ jumpTo=(step) => {
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares)
     const draw = calculateDraw(current.squares)
-    console.log(current.squares)
+  
 
 
     if (winner) {status = 'Winner :' + winner;}
     else if (draw) {status = draw}
     else {status = ('Next player: ') + (this.state.xIsNext? 'X' : 'O');}
     const moves = history.map((step, move) => { 
-    const desc = move ? 'go to move #'+move : 'restart game'
+    const desc = move ? 'Go to move #'+move : 'Restart The Game'
     return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button className="button" onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
       );
     });
@@ -107,7 +107,7 @@ jumpTo=(step) => {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <ol className="ol">{moves}</ol>
         </div>
       </div>
     );
