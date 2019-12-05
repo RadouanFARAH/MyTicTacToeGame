@@ -1,15 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import ayoub from './images/ayoub.png';
+import redouane from './images/redouane.png';
 
 
 function Square(props) {
-  
-    return (
-      <button className="square" onClick={props.onClick}>
-        {props.value}
-      </button>
+   const OorX=props.value;
+   if (OorX==='redouane') { 
+     return (
+        <button className="square" style={ {backgroundImage: `url(${redouane})`}} onClick={props.onClick}></button>
     )
+  }
+   else if (OorX==='ayoub') { 
+     return (
+        <button className="square" style={ {backgroundImage: `url(${ayoub})`}}  onClick={props.onClick}></button>
+    )
+  } 
+  else return (<button className="square"  onClick={props.onClick}>{OorX}</button>)
   
 }
 
@@ -61,7 +69,7 @@ class Game extends React.Component {
     const squares = current.squares.slice();
 
     if (calculateWinner(squares)||squares[i]){return}
-    squares[i]= this.state.xIsNext? 'X' : 'O'
+    squares[i]= this.state.xIsNext? 'redouane' : 'ayoub'
     this.setState({
     history: history.concat([{
         squares: squares,
@@ -74,8 +82,7 @@ class Game extends React.Component {
 
 jumpTo=(step) => {
   this.setState({
-      stepNumber: step,
-      xIsNext: (step % 2) === 0,
+      stepNumber: 0,
     });
 }
 
@@ -90,15 +97,8 @@ jumpTo=(step) => {
 
     if (winner) {status = 'Winner :' + winner;}
     else if (draw) {status = draw}
-    else {status = ('Next player: ') + (this.state.xIsNext? 'X' : 'O');}
-    const moves = history.map((step, move) => { 
-    const desc = move ? 'Go to move #'+move : 'Restart The Game'
-    return (
-        <li key={move}>
-          <button className="button" onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
-      );
-    });
+    else {status = ('Next player: ') + (this.state.xIsNext? 'Redouane' : 'Ayoub');}
+ 
 
     return (
       <div className="game">
@@ -107,7 +107,7 @@ jumpTo=(step) => {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol className="ol">{moves}</ol>
+          <button className="button" onClick={() => this.jumpTo()}>{'Restart The Game'}</button>
         </div>
       </div>
     );
@@ -128,7 +128,7 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return squares[a]
     }
   }
   return null;
